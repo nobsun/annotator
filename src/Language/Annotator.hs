@@ -35,7 +35,8 @@ class Comonad fa => Annotator fa where
   annotated :: forall b . fa b -> b
   annotated =  extract
 
-
+  annotateWith :: forall b . Annotation fa -> b -> fa b
+  
 instance Annotator ((,) a) where
   type Annotation ((,) a) = a
   annotating = fst
