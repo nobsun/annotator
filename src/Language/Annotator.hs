@@ -36,6 +36,9 @@ class Comonad fa => Annotator fa where
   annotated =  extract
   -- | put annotating on the top
   annotateWith :: forall b . Annotation fa -> b -> fa b
+  -- | put annotating of specified annotated tree on the top
+  annotateBy :: forall b . fa b -> b -> fa b
+  annotateBy = annotateWith . annotating
   
 instance Annotator ((,) a) where
   type Annotation ((,) a) = a
